@@ -59,7 +59,7 @@ function Allcountries(props) {
       region === "Asia" ||
       region === "Europe" ||
       region === "America" ||
-      region === "oceania"
+      region === "Oceania"
     ) {
       return (
         <div className="">
