@@ -9,18 +9,21 @@ function Allcountries(props) {
   const [region, setRegion] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
   const [name, setName] = useState(null);
+
   // search input handler
+
   function searchHandler(event) {
     setSearchTerm((searchTerm) => event.target.value);
   }
+
   // select menu handler
+
   function selectHandler(event) {
     setRegion((region) => event.target.value);
   }
 
-  // when country card clicked function
-
   // country card frame  function
+
   function CountryCardFrame({ country }, index) {
     return (
       <button
@@ -42,7 +45,15 @@ function Allcountries(props) {
       </button>
     );
   }
-  // use effect
+
+  // back button handler
+
+  function goBack() {
+    setIsClicked(false);
+  }
+
+  // use effect for fetching data from api
+
   useEffect(() => {
     fetch(` https://restcountries.eu/rest/v2/all`)
       .then((res) => res.json())
@@ -51,8 +62,9 @@ function Allcountries(props) {
       })
       .catch((error) => console.log(error));
   }, []);
+
   if (isClicked) {
-    return <CountryData countryName={name} />;
+    return <CountryData countryName={name} backHandler={() => goBack()} />;
   } else if (countries) {
     if (
       region === "Africa" ||
