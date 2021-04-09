@@ -64,7 +64,13 @@ function Allcountries(props) {
   }, []);
 
   if (isClicked) {
-    return <CountryData countryName={name} backHandler={() => goBack()} />;
+    return (
+      <CountryData
+        countryName={name}
+        backHandler={() => goBack()}
+        countries={countries}
+      />
+    );
   } else if (countries) {
     if (
       region === "Africa" ||

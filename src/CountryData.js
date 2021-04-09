@@ -15,7 +15,7 @@ const CountryData = (props) => {
     return (
       <div>
         <button className="back-button" onClick={props.backHandler}>
-          Back
+          <i className="fas fa-long-arrow-alt-left"> Back</i>
         </button>
         <div className="one-country">
           <div>
@@ -46,9 +46,19 @@ const CountryData = (props) => {
 
               <div className="border-countries">
                 Border countries:{" "}
-                {oneCountry[0].borders.map((borderCountry, index) => (
-                  <button key={index}>{borderCountry}</button>
-                ))}
+                {oneCountry[0].borders.map(
+                  (borderCountryWithAlphaCode, index) =>
+                    props.countries
+                      .filter(
+                        (country) =>
+                          country.alpha3Code === borderCountryWithAlphaCode
+                      )
+                      .map((borderCountry, index) => (
+                        <button key={index} onClick={() => props.handler}>
+                          {borderCountry.name}
+                        </button>
+                      ))
+                )}
               </div>
             </div>
           </div>
