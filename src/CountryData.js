@@ -11,6 +11,7 @@ const CountryData = (props) => {
       })
       .catch((error) => console.log(error));
   }, [props.countryName]);
+
   if (oneCountry) {
     return (
       <div>
@@ -31,16 +32,19 @@ const CountryData = (props) => {
                   <p>Population: {oneCountry[0].population}</p>
                   <p>Region: {oneCountry[0].region}</p>
                   <p>Sub-region: {oneCountry[0].subregion}</p>
-                  <p>Currency: {oneCountry[0].currency}</p>
+                  <p>
+                    Currency:{" "}
+                    {oneCountry[0].currencies.map((Currency) => Currency.code)}
+                  </p>
                 </div>
                 <div className="languages">
-                  <p>Top Level Domain: {oneCountry[0].topLevelDomain}</p>
-                  languages:
-                  <ul>
+                  <p>Top Level Domain{oneCountry[0].topLevelDomain}</p>
+                  <span>
+                    Languages:{" "}
                     {oneCountry[0].languages.map((language, index) => {
-                      return <li key={index}>{language.name}</li>;
+                      return <p key={index}>{language.name}</p>;
                     })}
-                  </ul>
+                  </span>
                 </div>
               </div>
 
@@ -54,9 +58,7 @@ const CountryData = (props) => {
                           country.alpha3Code === borderCountryWithAlphaCode
                       )
                       .map((borderCountry, index) => (
-                        <button key={index} onClick={() => props.handler}>
-                          {borderCountry.name}
-                        </button>
+                        <button key={index}>{borderCountry.name}</button>
                       ))
                 )}
               </div>
@@ -69,4 +71,5 @@ const CountryData = (props) => {
     return <div>NO Customer data</div>;
   }
 };
+
 export default CountryData;

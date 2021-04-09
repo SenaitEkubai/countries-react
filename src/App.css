@@ -26,6 +26,8 @@ body {
 .select-input-container :nth-child(2) {
   background-color: hsl(209, 23%, 22%);
   color: inherit;
+  height: 30px;
+  width: 20%;
 }
 .allCountries-container {
   display: grid;
@@ -69,11 +71,12 @@ body {
 }
 .one-country img {
   width: 100%;
-  height: 50%;
+  height: 60%;
+  margin-right: 20px;
 }
 .country-info div:first-child {
   display: grid;
-  grid-template-columns: 75% 25%;
+  grid-template-columns: 50% 30%;
 }
 .country-info div:first-child div:first-child {
   display: inline-block;
@@ -81,7 +84,8 @@ body {
 .languages ul {
   list-style: none;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .back-button {
   margin-right: 90%;
@@ -91,7 +95,7 @@ body {
   color: inherit;
 }
 .light {
-  background-color: white;
+  background-color: hsl(0, 0%, 98%);
   color: black;
 }
 .lighter {
@@ -101,5 +105,12 @@ i {
   font-weight: none;
 }
 .card-background {
-  background-color: hsl(0, 0%, 98%);
+  background-color: hsl(0, 0%, 100%);
+}
+.light-mode {
+  background-color: inherit;
+}
+.light-mode :first-child,
+.light-mode :nth-child(2) {
+  background-color: inherit;
 }

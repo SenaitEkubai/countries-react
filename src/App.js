@@ -6,8 +6,9 @@ function App() {
     const modeIcon = document.querySelector(".fa-moon");
     document.body.classList.toggle("light");
     modeIcon.innerHTML = "dark mode";
+    const selectAndInput = document.querySelector(".select-input-container");
+    selectAndInput.classList.toggle("light-mode");
     const cards = document.querySelectorAll(".card");
-
     cards.forEach((card) => {
       card.classList.toggle("card-background");
     });
@@ -23,7 +24,6 @@ function App() {
           </i>
         </span>
       </div>
-
       <AllCountries />
     </div>
   );
