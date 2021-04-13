@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 const CountryData = (props) => {
   const [oneCountry, setOneCountry] = useState(null);
 
@@ -12,7 +11,9 @@ const CountryData = (props) => {
       .catch((error) => console.log(error));
   }, [props.countryName]);
 
-  if (oneCountry) {
+  // one country view frame
+
+  function oneCountryView() {
     return (
       <div>
         <button className="back-button" onClick={props.backHandler}>
@@ -27,20 +28,39 @@ const CountryData = (props) => {
               <div>
                 <div>
                   <h3>{oneCountry[0].name} </h3>
-                  <p>Native name: {oneCountry[0].nativeName}</p>
-                  <p>Capital: {oneCountry[0].capital}</p>
-                  <p>Population: {oneCountry[0].population}</p>
-                  <p>Region: {oneCountry[0].region}</p>
-                  <p>Sub-region: {oneCountry[0].subregion}</p>
                   <p>
-                    Currency:{" "}
+                    <strong>Native name: </strong>
+                    {oneCountry[0].nativeName}
+                  </p>
+                  <p>
+                    <strong>Capital: </strong>
+                    {oneCountry[0].capital}
+                  </p>
+                  <p>
+                    <strong> Population: </strong>
+                    {oneCountry[0].population
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  </p>
+                  <p>
+                    <strong>Region: </strong> {oneCountry[0].region}
+                  </p>
+                  <p>
+                    <strong>Sub-region: </strong>
+                    {oneCountry[0].subregion}
+                  </p>
+                  <p>
+                    <strong>Currency: </strong>
                     {oneCountry[0].currencies.map((Currency) => Currency.code)}
                   </p>
                 </div>
                 <div className="languages">
-                  <p>Top Level Domain{oneCountry[0].topLevelDomain}</p>
+                  <p>
+                    <strong>Top Level Domain </strong>
+                    {oneCountry[0].topLevelDomain}
+                  </p>
                   <span>
-                    Languages:{" "}
+                    <strong>Languages: </strong>
                     {oneCountry[0].languages.map((language, index) => {
                       return <p key={index}>{language.name}</p>;
                     })}
@@ -49,7 +69,7 @@ const CountryData = (props) => {
               </div>
 
               <div className="border-countries">
-                Border countries:{" "}
+                <strong>Border countries: </strong>
                 {oneCountry[0].borders.map(
                   (borderCountryWithAlphaCode, index) =>
                     props.countries
@@ -58,7 +78,14 @@ const CountryData = (props) => {
                           country.alpha3Code === borderCountryWithAlphaCode
                       )
                       .map((borderCountry, index) => (
-                        <button key={index}>{borderCountry.name}</button>
+                        <button
+                          key={index}
+                          onClick={() => {
+                            oneCountryView(borderCountry.name);
+                          }}
+                        >
+                          {borderCountry.name}
+                        </button>
                       ))
                 )}
               </div>
@@ -67,8 +94,11 @@ const CountryData = (props) => {
         </div>
       </div>
     );
+  }
+  if (oneCountry) {
+    return oneCountryView();
   } else {
-    return <div>NO Customer data</div>;
+    return <div>NO Country data</div>;
   }
 };
 
