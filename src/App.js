@@ -6,13 +6,18 @@ function App() {
     const modeIcon = document.querySelector(".fa-moon");
     document.body.classList.toggle("light");
     modeIcon.innerHTML = "dark mode";
-    const selectAndInput = document.querySelector(".select-input-container");
-    selectAndInput.classList.toggle("light-mode");
     const cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
       card.classList.toggle("card-background");
     });
+    // check if select and input menus exist and add  a toggle class
+
+    const selectAndInput = document.querySelector(".select-input-container");
+    if (selectAndInput) {
+      selectAndInput.classList.toggle("light-mode");
+    }
   }
+
   return (
     <div className="App">
       <div className="title-icon">
