@@ -51,6 +51,7 @@ function Allcountries(props) {
   function goBack() {
     setIsClicked(false);
   }
+
   // use effect for fetching data from api
 
   useEffect(() => {
