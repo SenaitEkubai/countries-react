@@ -22,6 +22,12 @@ function Allcountries(props) {
     setRegion((region) => event.target.value);
   }
 
+  // set country name function for handling when border country button is clicked
+
+  function setCountryName(name) {
+    setName(name);
+  }
+
   // country card frame  function
 
   function CountryCardFrame({ country }, index) {
@@ -52,7 +58,7 @@ function Allcountries(props) {
     setIsClicked(false);
   }
 
-  // use effect for fetching data from api
+  // fetching data from https://restcountries.eu/rest/v2/all
 
   useEffect(() => {
     fetch(` https://restcountries.eu/rest/v2/all`)
@@ -69,6 +75,7 @@ function Allcountries(props) {
         countryName={name}
         backHandler={() => goBack()}
         countries={countries}
+        handler={(name) => setCountryName(name)}
       />
     );
   } else if (countries) {
