@@ -80,9 +80,9 @@ const CountryData = (props) => {
                       .map((borderCountry, index) => (
                         <button
                           key={index}
-                          onClick={() => {
-                            oneCountryView(borderCountry.name);
-                          }}
+                          onClick={() =>
+                            props.borderCountryHandler(borderCountry.name)
+                          }
                         >
                           {borderCountry.name}
                         </button>
