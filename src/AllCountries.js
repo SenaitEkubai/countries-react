@@ -75,7 +75,7 @@ function Allcountries(props) {
         countryName={name}
         backHandler={() => goBack()}
         countries={countries}
-        handler={(name) => setCountryName(name)}
+        borderCountryHandler={(name) => setCountryName(name)}
       />
     );
   } else if (countries) {
