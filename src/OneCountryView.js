@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-const CountryData = (props) => {
+const OneCountryView = (props) => {
   const [oneCountry, setOneCountry] = useState(null);
 
   useEffect(() => {
@@ -102,4 +102,4 @@ const CountryData = (props) => {
   }
 };
 
-export default CountryData;
+export default OneCountryView;

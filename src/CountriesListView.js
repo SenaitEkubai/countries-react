@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Search from "./Search";
 import FilterByRegion from "./FilterByRegion";
-import CountryData from "./CountryData";
+import OneCountryView from "./OneCountryView";
 
-function Allcountries(props) {
+function CountriesListView(props) {
   const [countries, setCountries] = useState();
   const [searchTerm, setSearchTerm] = useState(null);
   const [region, setRegion] = useState(null);
@@ -71,7 +71,7 @@ function Allcountries(props) {
 
   if (isClicked) {
     return (
-      <CountryData
+      <OneCountryView
         countryName={name}
         backHandler={() => goBack()}
         countries={countries}
@@ -155,4 +155,4 @@ function Allcountries(props) {
   }
 }
 
-export default Allcountries;
+export default CountriesListView;

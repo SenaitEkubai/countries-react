@@ -1,5 +1,5 @@
 import "./App.css";
-import AllCountries from "./AllCountries";
+import CountriesListView from "./CountriesListView";
 
 function App() {
   function change() {
@@ -29,7 +29,7 @@ function App() {
           </i>
         </span>
       </div>
-      <AllCountries />
+      <CountriesListView />
     </div>
   );
 }
